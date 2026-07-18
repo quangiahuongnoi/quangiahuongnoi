@@ -77,13 +77,23 @@ async function login(request, env, allowedOrigin) {
 
 async function publish(request, env, allowedOrigin) {
   assertSecrets(env);
-  const body = await readJson(request, 3_500_000);
+  const body = await readJson(request, 16_000_000);
   const incoming = body && typeof body.content === "object" ? structuredClone(body.content) : null;
   const images = body && typeof body.images === "object" ? body.images : {};
+  const audio = body && typeof body.audio === "string" ? body.audio : "";
   if (!incoming) throw new HttpError(400, "Dữ liệu nội dung không hợp lệ.");
 
   const stamp = Date.now();
   incoming.socialIcons = incoming.socialIcons || {};
+  incoming.music = incoming.music || {};
+
+  if (audio) {
+    const parsed = parseAudio(audio, 14_000_000);
+    const ext = parsed.mime === "audio/ogg" ? "ogg" : (parsed.mime === "audio/wav" || parsed.mime === "audio/x-wav") ? "wav" : (parsed.mime === "audio/mp4" || parsed.mime === "audio/x-m4a") ? "m4a" : "mp3";
+    const path = "music-admin." + ext;
+    await putGithubBinary(env, path, parsed.base64, "Cập nhật nhạc nền từ trang quản trị");
+    incoming.music.file = path + "?v=" + stamp;
+  }
 
   if (images.avatar) {
     const parsed = parseImage(images.avatar, ["image/webp", "image/jpeg", "image/png"], 900_000);
@@ -157,7 +167,10 @@ function normalizeContent(input) {
       youtube: input.socialIcons && input.socialIcons.youtube ? cleanAsset(input.socialIcons.youtube) : "",
       discord: input.socialIcons && input.socialIcons.discord ? cleanAsset(input.socialIcons.discord) : ""
     },
+    fontFamily: cleanFont(input.fontFamily),
+    headingFontFamily: cleanFont(input.headingFontFamily),
     fontScale: cleanScale(input.fontScale),
+    music: cleanMusic(input.music),
     colors: {
       background: cleanColor(input.colors && input.colors.background, "#070707"),
       primary: cleanColor(input.colors && input.colors.primary, "#e10600"),
@@ -203,6 +216,14 @@ function absoluteAsset(env, value) {
   if (/^https:\/\//i.test(value)) return value;
   const base = (env.SITE_URL || DEFAULTS.siteUrl).replace(/\/+$/, "");
   return base + "/" + value.replace(/^\/+/, "");
+}
+
+function parseAudio(dataUrl, maxBase64Length) {
+  if (typeof dataUrl !== "string") throw new HttpError(400, "Tệp nhạc không hợp lệ.");
+  const match = dataUrl.match(/^data:(audio\/(?:mpeg|mp3|ogg|wav|x-wav|mp4|x-m4a));base64,([A-Za-z0-9+/=]+)$/i);
+  if (!match) throw new HttpError(400, "Định dạng nhạc không được hỗ trợ.");
+  if (match[2].length > maxBase64Length) throw new HttpError(413, "Tệp nhạc quá lớn.");
+  return { mime: match[1].toLowerCase(), base64: match[2] };
 }
 
 function parseImage(dataUrl, allowedMimes, maxBase64Length) {
@@ -371,6 +392,29 @@ function cleanAsset(value) {
 }
 function cleanColor(value, fallback) {
   return typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value) ? value : fallback;
+}
+function cleanFont(value) {
+  const allowed = new Set(["modern", "arial", "tahoma", "georgia", "times", "monospace"]);
+  return allowed.has(value) ? value : "modern";
+}
+function cleanMusic(value) {
+  const music = value && typeof value === "object" ? value : {};
+  const file = music.file ? cleanAudioAsset(music.file) : "";
+  const enabled = !!music.enabled;
+  if (enabled && !file) throw new HttpError(400, "Hãy tải tệp nhạc trước khi bật trình phát.");
+  const volume = Number(music.volume);
+  return {
+    enabled,
+    title: typeof music.title === "string" && music.title.trim() ? music.title.trim().slice(0, 100) : "Nhạc nền",
+    file,
+    volume: Number.isFinite(volume) ? Math.min(1, Math.max(0, Math.round(volume * 100) / 100)) : 0.35,
+    loop: music.loop !== false,
+    autoplay: !!music.autoplay
+  };
+}
+function cleanAudioAsset(value) {
+  if (typeof value !== "string" || !/^[a-zA-Z0-9._/-]+\.(?:mp3|ogg|wav|m4a|mp4)(?:\?v=[a-zA-Z0-9._-]+)?$/i.test(value)) throw new HttpError(400, "Đường dẫn tệp nhạc không hợp lệ.");
+  return value;
 }
 function cleanScale(value) {
   const scale = Number(value);
