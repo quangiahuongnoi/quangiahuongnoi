@@ -1,0 +1,19 @@
+{
+  "siteName": "Quản gia hướng nội",
+  "role": "Nhà sáng tạo nội dung và streamer game",
+  "description": "Chia sẻ khoảnh khắc, khám phá thế giới game và kết nối cộng đồng.",
+  "aboutTitle": "Một góc nhỏ dành cho game và cộng đồng.",
+  "aboutText": "Xin chào, mình là Quản gia hướng nội. Đây là nơi tổng hợp các kênh chính thức và những cách nhanh nhất để kết nối với mình.",
+  "links": {
+    "tiktok": "https://www.tiktok.com/@quangiahuongnoi",
+    "youtube": "https://www.youtube.com/@quangiahuongnoi",
+    "discord": "https://discord.gg/dqw9FkgNDY"
+  },
+  "avatarImage": "avatar.webp",
+  "qrImage": "",
+  "colors": {
+    "background": "#070707",
+    "primary": "#e10600",
+    "accent": "#ff2a1a"
+  }
+}
