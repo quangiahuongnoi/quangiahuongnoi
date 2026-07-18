@@ -12,13 +12,13 @@ Worker này cho phép `admin.html` đăng nhập bằng mật khẩu riêng. Git
 6. Trong **Settings** → **Variables and Secrets**, thêm ba Secret:
    - `ADMIN_PASSWORD`: mật khẩu riêng, tối thiểu 12 ký tự.
    - `SESSION_SECRET`: chuỗi ngẫu nhiên tối thiểu 32 ký tự.
-   - `GITHUB_TOKEN`: Fine-grained GitHub token chỉ dành cho repo `quangiahuongnoi`, quyền **Contents: Read and write**.
+   - `GITHUB_TOKEN`: Fine-grained GitHub token chỉ dành cho repo `quangiahuongnoi.github.io`, quyền **Contents: Read and write**.
 7. Thêm các biến thường nếu Dashboard không dùng file `wrangler.toml`:
    - `ALLOWED_ORIGIN` = `https://quangiahuongnoi.github.io`
    - `GITHUB_OWNER` = `quangiahuongnoi`
-   - `GITHUB_REPO` = `quangiahuongnoi`
+   - `GITHUB_REPO` = `quangiahuongnoi.github.io`
    - `GITHUB_BRANCH` = `main`
-   - `SITE_URL` = `https://quangiahuongnoi.github.io/quangiahuongnoi`
+   - `SITE_URL` = `https://quangiahuongnoi.github.io`
 8. Sao chép URL dạng `https://quangiahuongnoi-admin-api.<tai-khoan>.workers.dev`.
 9. Mở trang `/admin.html`, nhập URL Worker một lần rồi đăng nhập bằng `ADMIN_PASSWORD`.
 
