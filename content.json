@@ -21,21 +21,21 @@
     "youtube": "",
     "discord": ""
   },
+  "fontFamily": "modern",
+  "headingFontFamily": "modern",
   "fontScale": 0.97,
+  "music": {
+    "enabled": true,
+    "title": "Nhạc nền",
+    "file": "music-admin.m4a?v=1784387125070",
+    "volume": 0.35,
+    "loop": true,
+    "autoplay": true
+  },
   "colors": {
     "background": "#070707",
     "primary": "#e10600",
     "accent": "#ff2a1a"
   },
-  "updatedAt": "2026-07-18T14:53:50.049Z",
-  "fontFamily": "modern",
-  "headingFontFamily": "modern",
-  "music": {
-    "enabled": false,
-    "title": "Nhạc nền",
-    "file": "",
-    "volume": 0.35,
-    "loop": true,
-    "autoplay": false
-  }
+  "updatedAt": "2026-07-18T15:05:28.351Z"
 }
