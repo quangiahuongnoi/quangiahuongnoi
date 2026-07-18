@@ -1,9 +1,9 @@
 const DEFAULTS = {
   allowedOrigin: "https://quangiahuongnoi.github.io",
   owner: "quangiahuongnoi",
-  repo: "quangiahuongnoi",
+  repo: "quangiahuongnoi.github.io",
   branch: "main",
-  siteUrl: "https://quangiahuongnoi.github.io/quangiahuongnoi"
+  siteUrl: "https://quangiahuongnoi.github.io"
 };
 
 const loginAttempts = new Map();
