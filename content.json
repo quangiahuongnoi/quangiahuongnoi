@@ -27,5 +27,15 @@
     "primary": "#e10600",
     "accent": "#ff2a1a"
   },
-  "updatedAt": "2026-07-18T14:53:50.049Z"
+  "updatedAt": "2026-07-18T14:53:50.049Z",
+  "fontFamily": "modern",
+  "headingFontFamily": "modern",
+  "music": {
+    "enabled": false,
+    "title": "Nhạc nền",
+    "file": "",
+    "volume": 0.35,
+    "loop": true,
+    "autoplay": false
+  }
 }
