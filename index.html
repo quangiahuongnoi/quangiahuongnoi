@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Portfolio và các kênh chính thức của Quản gia hướng nội — nhà sáng tạo nội dung và streamer game.">
+  <title>Quản gia hướng nội | Portfolio cá nhân</title>
+  <style>
+    :root{--bg:#070707;--surface:#111;--red:#e10600;--hot:#ff2a1a;--white:#f5f5f5;--muted:#a3a3a3;--border:#2a2a2a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid var(--hot);outline-offset:5px}
+    .skip{position:fixed;z-index:100;top:12px;left:12px;padding:10px 14px;border-radius:8px;background:#fff;color:#070707;transform:translateY(-160%);transition:.18s}.skip:focus{transform:none}
+    header{position:absolute;z-index:20;inset:0 0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5vw,76px);border-bottom:1px solid #ffffff17;background:#070707b8;backdrop-filter:blur(14px)}
+    .brand{display:inline-flex;align-items:center;gap:14px;font-weight:750;letter-spacing:-.02em}.mark{display:grid;place-items:center;width:39px;height:39px;border:2px solid var(--red);border-radius:50%;color:var(--hot);font:italic 700 24px/1 Georgia,serif}
+    nav{height:100%;display:flex;align-items:center;gap:clamp(24px,4vw,64px)}nav a{position:relative;height:100%;display:flex;align-items:center;color:#d8d8d8;font-size:15px;font-weight:650}nav a:after{content:"";position:absolute;inset:auto 0 0;height:2px;background:var(--hot);transform:scaleX(0);transition:.18s}nav a:hover,nav a.active{color:var(--hot)}nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+    .hero{position:relative;isolation:isolate;overflow:hidden;min-height:900px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);align-items:center;gap:clamp(30px,4vw,70px);padding:110px clamp(24px,5vw,76px) 80px}
+    .hero:before{content:"";position:absolute;z-index:-4;inset:0;background-image:linear-gradient(#e1060012 1px,transparent 1px),linear-gradient(90deg,#e1060012 1px,transparent 1px);background-position:center 72%;background-size:64px 64px;mask-image:linear-gradient(to bottom,transparent 8%,#000 52%,transparent);transform:perspective(500px) rotateX(58deg) scale(1.55) translateY(29%)}
+    .hero:after{content:"";position:absolute;z-index:-3;top:5%;right:-5%;width:65vw;height:86%;background:radial-gradient(circle at 55% 45%,#e1060057,transparent 32%),radial-gradient(circle at 56% 45%,#e1060024,transparent 58%);filter:blur(14px)}
+    .copy{position:relative;z-index:3;max-width:790px;animation:rise .65s cubic-bezier(.2,.75,.25,1) both}.eyebrow{display:flex;align-items:center;gap:15px;margin:0 0 24px;color:var(--hot);font:650 14px ui-monospace,monospace;letter-spacing:.24em;text-transform:uppercase}.eyebrow:before{content:"";width:30px;height:1px;background:var(--hot)}.eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--hot)}
+    h1{max-width:780px;margin:0;font-size:clamp(56px,6.2vw,92px);line-height:.98;font-weight:850;letter-spacing:-.065em;text-wrap:balance;text-shadow:0 12px 50px #00000073}.lead{margin:31px 0 0;color:#d7d7d7;font-size:clamp(21px,2vw,29px);font-weight:700;letter-spacing:-.025em}.desc{max-width:580px;margin:20px 0 0;color:var(--muted);font-size:18px;line-height:1.65}
+    .actions{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:15px;margin-top:45px}.social{display:flex;min-height:58px;align-items:center;justify-content:center;gap:11px;border:1px solid var(--border);border-radius:12px;background:#111111d6;box-shadow:inset 0 1px #ffffff08;font-weight:700;transition:.18s}.social:hover{border-color:#ff2a1abf;box-shadow:0 10px 30px #e1060024;transform:translateY(-3px)}.glyph{width:24px;height:24px;display:grid;place-items:center;font-size:18px;font-weight:900}.donate{border-color:var(--hot);background:linear-gradient(135deg,#71110d,#d30c05);box-shadow:0 0 28px #e106003d}
+    .portrait{position:relative;z-index:2;display:grid;place-items:center;justify-self:center;width:min(37vw,500px);aspect-ratio:1;border:1px dashed #ff2a1a47;border-radius:50%;animation:fade .85s .15s ease both,spin 32s linear infinite}.portrait:before,.portrait:after{content:"";position:absolute;border-radius:50%}.portrait:before{inset:7%;border:1px solid #ff2a1a52;box-shadow:0 0 48px #e1060040}.portrait:after{inset:14%;border:1px solid #ff2a1ab3;box-shadow:0 0 42px #e1060059,inset 0 0 35px #e106001f}
+    .avatar{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;width:66%;aspect-ratio:1;border:1px solid #ffffff14;border-radius:50%;background:linear-gradient(145deg,#151010,#050505 64%);box-shadow:inset -36px -20px 60px #e1060024;animation:spin 32s linear infinite reverse}.avatar strong{font-size:clamp(64px,8vw,112px);letter-spacing:-.09em;line-height:.9}.avatar small{margin-top:17px;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.18em;text-transform:uppercase}
+    .section{width:min(100% - 48px,1288px);margin:auto;padding:128px 0;border-top:1px solid var(--border)}.label{margin-bottom:38px;color:var(--hot);font:650 12px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}.intro{display:grid;grid-template-columns:1.15fr .85fr;gap:80px}h2{margin:0;font-size:clamp(38px,5vw,70px);line-height:1.04;font-weight:820;letter-spacing:-.055em}.body-copy{margin:0;color:#c6c6c6;font-size:19px;line-height:1.7}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}.chips span{padding:9px 13px;border:1px solid var(--border);border-radius:999px;color:#cfcfcf;font-size:12px;font-weight:650}
+    .section-head{max-width:760px;margin-bottom:60px}.section-head p,.donate-copy p{max-width:570px;margin:22px 0 0;color:var(--muted);font-size:17px;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{position:relative;min-height:240px;display:grid;grid-template-columns:1fr auto;align-items:end;padding:26px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(145deg,#161616eb,#0a0a0af5);transition:.18s}.card:hover{transform:translateY(-5px);border-color:#ff2a1aa6;box-shadow:0 20px 60px #e106001f}.num{position:absolute;top:26px;left:26px;color:#676767;font:12px ui-monospace,monospace}.card-glyph{position:absolute;top:24px;right:25px;color:var(--hot);font-size:34px;font-weight:900}.card-text{display:flex;flex-direction:column;gap:7px}.card-text strong{font-size:24px}.card-text small{color:var(--muted)}.arrow{color:#777;font-size:20px}
+    .donate-section{display:grid;grid-template-columns:1fr auto;align-items:center;gap:80px}.qr{position:relative;width:270px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed #ff2a1abf;border-radius:20px;background:repeating-linear-gradient(45deg,#e1060009 0 8px,#ffffff05 8px 9px)}.qr b{margin-bottom:16px;color:var(--hot);font-size:34px}.qr strong{font-size:22px}.qr small{margin-top:9px;color:var(--muted)}
+    footer{width:min(100% - 48px,1288px);margin:auto;padding:48px 0;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;color:var(--muted);font-size:12px}footer p{text-align:center}footer>a:last-child{justify-self:end;color:#d6d6d6}
+    @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:1060px){.hero{min-height:820px;grid-template-columns:1fr .68fr}.actions{grid-template-columns:repeat(2,minmax(150px,1fr))}.portrait{width:min(38vw,400px)}}
+    @media(max-width:760px){header{height:68px}.brand{font-size:14px}nav{gap:16px}nav a{font-size:12px}nav a:nth-child(2){display:none}.hero{min-height:940px;grid-template-columns:1fr;align-content:center;gap:52px;padding-top:110px;text-align:center}.portrait{width:min(76vw,360px);grid-row:1}.copy{margin:auto}.eyebrow{justify-content:center;font-size:11px}h1{font-size:clamp(47px,14vw,68px)}.desc{margin-left:auto;margin-right:auto;font-size:15px}.section{width:min(100% - 40px,1288px);padding:88px 0}.intro,.donate-section{grid-template-columns:1fr;gap:46px}.grid{grid-template-columns:1fr}.card{min-height:190px}.qr{width:min(270px,100%)}footer{width:min(100% - 40px,1288px);grid-template-columns:1fr;justify-items:start}footer p{text-align:left}footer>a:last-child{justify-self:start}}
+    @media(max-width:440px){header{padding:0 18px}.brand>span:last-child{max-width:120px;line-height:1.1}nav a:not(.active){display:none}.hero{min-height:900px;padding-left:18px;padding-right:18px}.actions{grid-template-columns:1fr 1fr;gap:10px}.social{min-height:54px;font-size:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body id="trang-chu">
+  <a class="skip" href="#noi-dung">Bỏ qua điều hướng</a>
+  <header>
+    <a class="brand" href="#trang-chu"><span class="mark" aria-hidden="true">Q</span><span>Quản gia hướng nội</span></a>
+    <nav aria-label="Điều hướng chính"><a class="active" href="#trang-chu">Trang chủ</a><a href="#gioi-thieu">Giới thiệu</a><a href="#lien-ket">Liên kết</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="noi-dung">
+      <div class="copy">
+        <p class="eyebrow">Creator <i></i> Streamer</p>
+        <h1>Quản gia hướng nội</h1>
+        <p class="lead">Nhà sáng tạo nội dung và streamer game</p>
+        <p class="desc">Chia sẻ khoảnh khắc, khám phá thế giới game và kết nối cộng đồng.</p>
+        <div class="actions">
+          <a class="social" href="https://www.tiktok.com/@quangiahuongnoi" target="_blank" rel="noreferrer"><span class="glyph">♪</span>TikTok</a>
+          <a class="social" href="https://www.youtube.com/@quangiahuongnoi" target="_blank" rel="noreferrer"><span class="glyph">▶</span>YouTube</a>
+          <a class="social" href="https://discord.gg/dqw9FkgNDY" target="_blank" rel="noreferrer"><span class="glyph">◉</span>Discord</a>
+          <a class="social donate" href="#donate"><span class="glyph">♡</span>Donate</a>
+        </div>
+      </div>
+      <div class="portrait" aria-label="Vị trí ảnh đại diện"><div class="avatar"><strong>QG</strong><small>Ảnh đại diện</small></div></div>
+    </section>
+
+    <section class="section" id="gioi-thieu">
+      <div class="label">01 / Giới thiệu</div>
+      <div class="intro">
+        <h2>Một góc nhỏ dành cho game và cộng đồng.</h2>
+        <div><p class="body-copy">Xin chào, mình là <strong>Quản gia hướng nội</strong>. Đây là nơi tổng hợp các kênh chính thức và những cách nhanh nhất để kết nối với mình.</p><div class="chips"><span>Nội dung game</span><span>Livestream</span><span>Kết nối cộng đồng</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="lien-ket">
+      <div class="section-head"><div class="label">02 / Liên kết</div><h2>Theo dõi và kết nối</h2><p>Tất cả các kênh chính thức của Quản gia hướng nội.</p></div>
+      <div class="grid">
+        <a class="card" href="https://www.tiktok.com/@quangiahuongnoi" target="_blank" rel="noreferrer"><span class="num">01</span><span class="card-glyph">♪</span><span class="card-text"><strong>TikTok</strong><small>@quangiahuongnoi</small></span><span class="arrow">↗</span></a>
+        <a class="card" href="https://www.youtube.com/@quangiahuongnoi" target="_blank" rel="noreferrer"><span class="num">02</span><span class="card-glyph">▶</span><span class="card-text"><strong>YouTube</strong><small>@quangiahuongnoi</small></span><span class="arrow">↗</span></a>
+        <a class="card" href="https://discord.gg/dqw9FkgNDY" target="_blank" rel="noreferrer"><span class="num">03</span><span class="card-glyph">◉</span><span class="card-text"><strong>Discord</strong><small>Tham gia cộng đồng</small></span><span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section donate-section" id="donate">
+      <div class="donate-copy"><div class="label">03 / Ủng hộ</div><h2>Donate</h2><p>Khu vực mã QR WeScan đã được chuẩn bị. Bạn có thể bổ sung mã QR sau mà không cần thay đổi bố cục website.</p></div>
+      <div class="qr"><b>♡</b><strong>WeScan</strong><small>QR sẽ được cập nhật</small></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#trang-chu"><span class="mark">Q</span><span>Quản gia hướng nội</span></a><p>Portfolio cá nhân · Việt Nam</p><a href="#trang-chu">Về đầu trang ↑</a></footer>
+</body>
+</html>
