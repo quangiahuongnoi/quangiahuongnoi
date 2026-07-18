@@ -26,20 +26,20 @@
   "fontScale": 0.97,
   "music": {
     "enabled": true,
-    "source": "upload",
+    "source": "spotify",
     "title": "Nhạc nền",
     "artist": "",
     "file": "music-admin.m4a?v=1784387125070",
-    "url": "",
-    "layout": "compact",
+    "url": "https://open.spotify.com/track/6ELX356o21U28T73ZxruUj?si=e5409a765e184bc8",
+    "layout": "full",
     "volume": 0.35,
     "loop": true,
-    "autoplay": true
+    "autoplay": false
   },
   "colors": {
     "background": "#070707",
     "primary": "#e10600",
     "accent": "#ff2a1a"
   },
-  "updatedAt": "2026-07-18T16:00:40.838Z"
+  "updatedAt": "2026-07-18T16:47:18.298Z"
 }
