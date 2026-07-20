@@ -34,12 +34,12 @@
     "layout": "compact",
     "volume": 0.35,
     "loop": true,
-    "autoplay": false
+    "autoplay": true
   },
   "colors": {
     "background": "#070707",
     "primary": "#e10600",
     "accent": "#ff2a1a"
   },
-  "updatedAt": "2026-07-20T07:27:47.771Z"
+  "updatedAt": "2026-07-20T07:27:59.268Z"
 }
